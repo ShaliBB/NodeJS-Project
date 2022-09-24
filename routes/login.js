@@ -11,6 +11,7 @@ const uLogJoiSchema = joi.object({
     password: joi.string().required().min(8)
 });
 
+// תרגיל 2
 router.post("/", async (req, res) =>{
 try {
     const {error} = uLogJoiSchema.validate(req.body)

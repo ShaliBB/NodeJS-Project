@@ -4,6 +4,8 @@ const auth = require("../middlewares/auth");
 const User = require("../modules/User");
 const router = express.Router();
 
+
+// תרגיל 3
 router.get("/", auth, async (req, res) => {
     try {
         let user = await User.findById(req.payload._id);

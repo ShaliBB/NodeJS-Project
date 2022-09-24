@@ -13,6 +13,8 @@ const uRegJoiSchema = joi.object({
     biz: joi.boolean().required()
 });
 
+// תרגיל 1
+
 router.post("/", async (req, res) => {
     try {
         const {error} = uRegJoiSchema.validate(req.body)

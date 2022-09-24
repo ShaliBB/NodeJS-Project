@@ -4,7 +4,6 @@ const joi = require("joi");
 const auth = require("../middlewares/auth");
 const router = express.Router();
 const Card = require("../modules/Card");
-const User = require("../modules/User");
 
 const cardJoiSchema = joi.object({
     bizName: joi.string().required().min(2),
@@ -14,6 +13,7 @@ const cardJoiSchema = joi.object({
     bizImage: joi.string().required().min(2)
 });
 
+// תרגיל 4
 router.post("/", auth, async (req, res) => {
     try {
         const {error} = cardJoiSchema.validate(req.body);
@@ -37,6 +37,7 @@ router.post("/", auth, async (req, res) => {
     }
 });
 
+// תרגיל 8
 router.get("/myCards", auth, async (req,res) => {
     try {
         let card = await Card.find({userId: req.payload._id});
@@ -46,6 +47,7 @@ router.get("/myCards", auth, async (req,res) => {
     }
 });
 
+// תרגיל 5
 router.get("/:bizNumber", auth, async (req, res) => {
     try {
         let card = await Card.findOne({bizNumber: req.params.bizNumber});
@@ -56,6 +58,7 @@ router.get("/:bizNumber", auth, async (req, res) => {
     }
 });
 
+// תרגיל 6
 router.put("/:bizNumber", auth, async (req, res) => {
     try {
         const {error} = cardJoiSchema.validate(req.body);
@@ -68,6 +71,7 @@ router.put("/:bizNumber", auth, async (req, res) => {
     }
 });
 
+// תרגיל 7
 router.delete("/:bizNumber", auth, async (req, res) => {
     try {
         let card = await Card.findOneAndDelete({bizNumber: req.params.bizNumber});
@@ -78,6 +82,7 @@ router.delete("/:bizNumber", auth, async (req, res) => {
     }  
 });
 
+// תרגיל 9
 router.get("/", auth, async (req, res) => {
     try {
         let cards = await Card.find();
